@@ -1,0 +1,33 @@
+<div class="row search-page">
+
+    <form name="searchForm" class="search-form" ng-submit="sfc.submitForm()">
+      <div class="row form-group">
+
+        <label class="col-md-3" for="fname">First Name</label>
+        <input class="col-md-3 form-control" type="text" name="fname" id="fname" ng-model="user.fname" >
+
+        <label class="col-md-3" for="lname">Last Name</label>
+        <input class="col-md-3 form-control" type="text" name="lname" id="lname" ng-model="user.lname" >
+      </div><br>
+      <div class="row form-group" >
+
+        <label class="col-md-3" for="dob">Date of Birth</label>
+        <input
+          type="text"  class="col-md-3 form-control" uib-datepicker-popup="yyyy/MM/dd"
+          ng-model="sfc.user.dob" name="dob" id="dob"
+          is-open="sfc.dateOpen"
+          datepicker-options="dateOptions"
+          close-text="Close" alt-input-formats="altInputFormats" />
+         <span class="input-group-btn col-md-1">
+            <button type="button" class="btn btn-default " ng-click="sfc.datePopOpened()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        <label class="col-md-2" for="address">Address</label>
+        <input class="col-md-2 form-control" type="text" name="address" id="address" ng-model="sfc.user.address" >
+      </div><br>
+
+      <input type="submit" class="btn btn-success" value="Submit">
+      <button type="button" class="btn btn-danger" ng-click="sfc.reset()">clear</button>
+
+    </form>
+
+</div>
