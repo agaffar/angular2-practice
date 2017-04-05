@@ -4,6 +4,11 @@
   {{body}}
 </P>
 
-<img [src]="imageLink">
-<search-form></search-form>
-<button (click)="runClick()">Click Me</button>
+user:{{user}}
+<search-form [user]="user" (submitForm) = "submitForm()" (reset)="reset()">
+
+</search-form>
+<br>
+tableData={{tableData.length}};;
+{{tableData!==undefined && tableData.length>0}};;
+<result-table *ngIf="tableData!==undefined && tableData.length>0" [resultTableData]="tableData"></result-table>

@@ -1,33 +1,33 @@
-<div class="row search-page">
+<div class="container">
+  <div class="row search-page">
 
-    <form name="searchForm" class="search-form" ng-submit="sfc.submitForm()">
+    <form name="searchForm" class="search-form" (submit)="submitFormUser()">
       <div class="row form-group">
 
         <label class="col-md-3" for="fname">First Name</label>
-        <input class="col-md-3 form-control" type="text" name="fname" id="fname" ng-model="user.fname" >
+        <input class="col-md-3 form-control" type="text" name="fname" id="fname" [(ngModel)]="user.fname" >
 
         <label class="col-md-3" for="lname">Last Name</label>
-        <input class="col-md-3 form-control" type="text" name="lname" id="lname" ng-model="user.lname" >
+        <input class="col-md-3 form-control" type="text" name="lname" id="lname" [(ngModel)]="user.lname" >
       </div><br>
       <div class="row form-group" >
 
         <label class="col-md-3" for="dob">Date of Birth</label>
-        <input
-          type="text"  class="col-md-3 form-control" uib-datepicker-popup="yyyy/MM/dd"
-          ng-model="sfc.user.dob" name="dob" id="dob"
-          is-open="sfc.dateOpen"
-          datepicker-options="dateOptions"
-          close-text="Close" alt-input-formats="altInputFormats" />
-         <span class="input-group-btn col-md-1">
-            <button type="button" class="btn btn-default " ng-click="sfc.datePopOpened()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
+
+        <input class="form-control" placeholder="yyyy-mm-dd" id="dob"  name="dob" [(ngModel)]="user.dob"
+               ngbDatepicker #d1="ngbDatepicker" >
+        <div class="input-group-addon" (click)="d1.toggle()" >
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
         <label class="col-md-2" for="address">Address</label>
-        <input class="col-md-2 form-control" type="text" name="address" id="address" ng-model="sfc.user.address" >
+        <input class="col-md-2 form-control" type="text" name="address" id="address" [(ngModel)]="user.address" >
       </div><br>
 
       <input type="submit" class="btn btn-success" value="Submit">
-      <button type="button" class="btn btn-danger" ng-click="sfc.reset()">clear</button>
+      <button type="button" class="btn btn-danger"(click)="resetForm()">clear</button>
 
     </form>
 
+  </div>
 </div>
+

@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+.search-form input[type=text],.searchForm input[type=number],.searchForm input[type=date],.search-form input{
+  width: 25%;
+}

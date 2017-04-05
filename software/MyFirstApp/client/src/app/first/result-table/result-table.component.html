@@ -1,0 +1,79 @@
+<!--
+<div class="row">
+  <div class="col-md-4">
+    <input *ngIf="config.filtering" placeholder="Filter all columns"
+           [ngTableFiltering]="config.filtering"
+           class="form-control"
+           (tableChanged)="onChangeTable(config)"/>
+  </div>
+</div>
+<br>
+<ng-table [config]="config"
+          (tableChanged)="onChangeTable(config)"
+          (cellClicked)="onCellClick($event)"
+          [rows]="rows" [columns]="columns">
+</ng-table>
+<pagination *ngIf="config.paging"
+            class="pagination-sm"
+            [(ngModel)]="page"
+            [totalItems]="length"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="numPages = $event">
+</pagination>
+<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+-->
+
+resultTableData == {{resultTableData}};;
+
+<div class="row">
+  <table class="table table-responsive">
+  <thead>
+  <tr>
+    <td>
+      First Name
+    </td>
+    <td>
+      Last Name
+    </td>
+    <td>
+      Date Of Birth
+    </td>
+    <td>
+      Address
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="text" class="form-control" name="firstName"  [(ngModel)]="filter.firstName" (keypress)="filterTable()">
+    </td>
+    <td>
+      <input type="text" class="form-control" name="lastName"  [(ngModel)]="filter.lastName">
+    </td>
+    <td>
+    </td>
+    <td>
+      <input type="text" class="form-control" name="address"  [(ngModel)]="filter.address">
+    </td>
+  </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let user of resultTableData">
+      <td><span [innerHTML]="user.firstName"></span></td>
+      <td><span [innerHTML]="user.lastName"></span></td>
+      <td><span [innerHTML]="user.dateOfBirth"></span></td>
+      <td>
+        <div *ngFor="let address of user.addresses">
+        <span [innerHTML]="address.street"></span><br>
+        <span [innerHTML]="address.houseNo"></span><br>
+        <span [innerHTML]="address.city"></span><br>
+        <span [innerHTML]="address.state"></span><br><br>
+      </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
