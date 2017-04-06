@@ -13,6 +13,7 @@ export class FirstComponent implements OnInit {
   imageLink : string = 'http://lorempixel.com/400/200'
   private user = {};
   private tableData = [];
+  paginationObject : any;
   constructor(private FirstService:FirstService,private QueryApi : QueryApi) {
 
 
@@ -28,10 +29,15 @@ export class FirstComponent implements OnInit {
       "user" : this.user
     };
 
+
     this.FirstService.getSearchedData(query).subscribe((response) => {
         if (response.status === "ok") {
           // this.router.navigate(['staff']);
           console.log(response.data);
+          this.paginationObject = {
+            "pagination" : pagination,
+             "total" : response.pagination.total
+          }
           //this.tableData = this.modularized(response.data);
           this.setTableData(this.modularized(response.data))
           console.log(this.tableData);

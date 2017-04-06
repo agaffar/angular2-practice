@@ -9,6 +9,7 @@ user:{{user}}
 
 </search-form>
 <br>
-tableData={{tableData.length}};;
-{{tableData!==undefined && tableData.length>0}};;
-<result-table *ngIf="tableData!==undefined && tableData.length>0" [resultTableData]="tableData"></result-table>
+<!--tableData={{tableData.length}};;
+{{tableData!==undefined && tableData.length>0}};
+pagination &#45;&#45; {{paginationObject}}-->
+<result-table *ngIf="tableData!==undefined && tableData.length>0" [resultTableData]="tableData" [pagination]="paginationObject"></result-table>

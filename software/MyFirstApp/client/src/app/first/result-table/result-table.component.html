@@ -30,20 +30,21 @@
 resultTableData == {{resultTableData}};;
 
 <div class="row">
-  <table class="table table-responsive">
+  <table class="table table-responsive table-bordered">
   <thead>
   <tr>
-    <td>
-      First Name
+    <td ><i class="fa fa-sort" aria-hidden="true"><a (click)="sorting('firstName')">First Name</a></i>
     </td>
     <td>
-      Last Name
+      <i class="fa fa-sort" aria-hidden="true"><a (click)="sorting('lastName')"> Last Name</a></i>
     </td>
     <td>
       Date Of Birth
     </td>
-    <td>
-      Address
+    <td >
+      <i class="fa fa-sort" aria-hidden="true"><a (click)="sorting('addresses')"> Address</a></i>
+
+
     </td>
   </tr>
   <tr>
@@ -61,7 +62,7 @@ resultTableData == {{resultTableData}};;
   </tr>
   </thead>
     <tbody>
-    <tr *ngFor="let user of resultTableData">
+    <tr *ngFor="let user of resultTableData | MyFilter : filter.firstName : filter.lastName : filter.address ">
       <td><span [innerHTML]="user.firstName"></span></td>
       <td><span [innerHTML]="user.lastName"></span></td>
       <td><span [innerHTML]="user.dateOfBirth"></span></td>
@@ -76,4 +77,17 @@ resultTableData == {{resultTableData}};;
     </tr>
     </tbody>
   </table>
+  <div class="row" *ngIf='resultTableData.length>0'>
+    <ngb-pagination
+      [collectionSize]="pagination.total"
+      [(page)]="page"
+      [maxSize]="maxSize"
+      [rotate]="false"
+      (numPages)="numPages = $event"
+      [ellipses]="true"
+      [pageSize]="pagination.pagination.limito"
+      [boundaryLinks]="true"
+      (pageChange)="onChangeTable()">
+    </ngb-pagination>
+  </div>
 </div>
